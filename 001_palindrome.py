@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 # https://www.practicepython.org/exercise/2014/03/12/06-string-lists.html
 
@@ -6,6 +7,7 @@
 # (A palindrome is a string that reads the same forwards and backwards.)
 
 
+# -----------------------------------------------------------------------------------------
 def is_palindrome(user_string):
 
     '''\nthis function determines if a given string is a palindrome and returns True or False:
@@ -25,6 +27,7 @@ for arguments different than a string TypeError exception is raised\n'''
         return True
 
     return False
+# -----------------------------------------------------------------------------------------
 
 
 if __name__ == '__main__':
