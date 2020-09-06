@@ -21,15 +21,23 @@ def get_file_content(file): # this function returns content of a file
 
 if __name__ == '__main__':
     
-    file1 = '002_file_overlap_happy_numbers.txt'
-    file2 = '002_file_overlap_prime_numbers.txt'
+    file_1 = '002_file_overlap_happy_numbers.txt'
+    file_2 = '002_file_overlap_prime_numbers.txt'
 
-    file1_content = get_file_content(file1)
-    file2_content = get_file_content(file2)
+    # content is assing to a variable
+    content_file_1 = get_file_content(file_1) # content of the 1st file, e.g. -> '1 2 3 4 5'
+    content_file_2 = get_file_content(file_2) # content of the 2nd file, e.g. -> '3 4 5 6 7'
 
-    file1_nums = set(file1_content.split())
-    file2_nums = set(file2_content.split())
-    
-    overlapping_numbers = file1_nums.intersection(file2_nums)
+    # we split the content to get numbers
+    nums_file_1 = content_file_1.split() # splits the content on whitespace -> ['1', '2', '3', '4', '5']
+    nums_file_2 = content_file_2.split() # splits the content on whitespace -> ['3', '4', '5', '6', '7']
+
+    # now we convert lists of numbers into sets, duplicates are removed if they are present
+    set_nums_file_1 = set(nums_file_1) # list to set conversion -> {'5', '2', '1', '4', '3'}
+    set_nums_file_2 = set(nums_file_2) # list to set conversion -> {'5', '7', '6', '4', '3'}
+ 
+    # we find overlapping numbers using set intersection method -> set.intersection(set1, set2 ... etc)
+    # intersection() method returns a new set with elements that are common to all sets
+    overlapping_numbers = set_nums_file_1.intersection(set_nums_file_2) # -> {'3', '5', '4'}
 
     print(overlapping_numbers)
