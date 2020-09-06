@@ -24,7 +24,7 @@ if __name__ == '__main__':
     file_1 = '002_file_overlap_happy_numbers.txt'
     file_2 = '002_file_overlap_prime_numbers.txt'
 
-    # content is assing to a variable
+    # content is assigned to a variable
     content_file_1 = get_file_content(file_1) # content of the 1st file, e.g. -> '1 2 3 4 5'
     content_file_2 = get_file_content(file_2) # content of the 2nd file, e.g. -> '3 4 5 6 7'
 
