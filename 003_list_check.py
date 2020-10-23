@@ -9,7 +9,7 @@
 
 def list_check(test_list):
 
-    if type(test_list) is not list: # function only works for list
+    if not isinstance(test_list, list): # function only works for list
         raise TypeError('Only lists are allowed')
 
     if not test_list: # if test_list is empty function will return False, same as if test_list == []
@@ -17,7 +17,7 @@ def list_check(test_list):
 
     # all() method returns True when all elements in the given iterable are true. If not, it returns False
 
-    check = [type(element) is list for element in test_list] # (type(element) is list) evaluates to True or False
+    check = [isinstance(element, list) for element in test_list] # isinstance(element, list) evaluates to True or False
 
     if all(check): # True if every element in a list is a list
         return True
