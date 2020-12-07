@@ -11,7 +11,7 @@
 def flatten(nested_list):
     check = True
     
-    while check == True: # initial list is being flattend till there are no list elements remaining
+    while check: # initial list is being flattend till there are no list elements remaining
         flattened_list = []
 
         for element in nested_list:
