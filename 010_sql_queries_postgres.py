@@ -194,7 +194,7 @@ execute_and_print(sql_query)
 # Expected Result: 6
 
 sql_query = r'''
-SELECT COUNT(guestcost) from cd.facilities
+SELECT COUNT(guestcost) FROM cd.facilities
 WHERE guestcost >= 10
 '''
 
@@ -208,8 +208,7 @@ execute_and_print(sql_query)
 # Expected Result is 9 rows
 
 sql_query = r'''
-SELECT facid, SUM(slots)
-FROM cd.bookings
+SELECT facid, SUM(slots) FROM cd.bookings
 WHERE starttime >= '2012-09-01' AND starttime <='2012-09-30'
 GROUP BY facid
 ORDER BY SUM(slots) DESC
@@ -225,7 +224,7 @@ execute_and_print(sql_query)
 # Expected Result is 5 rows
 
 sql_query = r'''
-SELECT facid, SUM(slots) from cd.bookings
+SELECT facid, SUM(slots) FROM cd.bookings
 GROUP BY facid
 HAVING SUM(slots) > 1000
 ORDER BY facid
@@ -241,7 +240,7 @@ execute_and_print(sql_query)
 # Expected Result is 12 rows
 
 sql_query = r'''
-SELECT starttime, cd.facilities.name from cd.bookings
+SELECT starttime, cd.facilities.name FROM cd.bookings
 INNER JOIN cd.facilities ON cd.bookings.facid = cd.facilities.facid
 WHERE cd.facilities.name LIKE '%Tennis Court%'
 AND starttime >= '2012-09-21 00:00:00' AND starttime < '2012-09-22 00:00:00'
@@ -257,12 +256,9 @@ execute_and_print(sql_query)
 # Expected result is 34 rows of timestamps
 
 sql_query = r'''
---SELECT cd.members.firstname as name, cd.members.surname as surname, starttime
-SELECT starttime
-FROM cd.bookings
+SELECT starttime FROM cd.bookings
 INNER JOIN cd.members ON cd.bookings.memid = cd.members.memid
 WHERE cd.members.firstname LIKE 'David' AND cd.members.surname LIKE 'Farrell'
---ORDER BY starttime
 '''
 
 execute_and_print(sql_query)
