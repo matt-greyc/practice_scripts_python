@@ -21,10 +21,10 @@ def get_credentials():
 def execute_and_print(sql_query):
 
     credentials = get_credentials()
-    user=credentials['user']
-    password=credentials['password']
-    port=credentials['port']
-    host=credentials['host']
+    user = credentials['user']
+    password = credentials['password']
+    port = credentials['port']
+    host = credentials['host']
     database = 'exercises'
 
     conn = psycopg2.connect(dbname=database, user=user, password=password, port=port, host=host)
@@ -139,7 +139,7 @@ execute_and_print(sql_query)
 
 sql_query = r'''
 SELECT memid, surname, firstname, joindate FROM cd.members
-WHERE joindate > '2012-09-01 00:00:00'
+WHERE joindate >= '2012-09-01 00:00:00'
 '''
 
 execute_and_print(sql_query)
@@ -208,10 +208,11 @@ execute_and_print(sql_query)
 # Expected Result is 9 rows
 
 sql_query = r'''
-SELECT facid, COUNT(facid) from cd.bookings
-WHERE starttime BETWEEN '2012-09-01' AND '2012-09-30'
+SELECT facid, SUM(slots)
+FROM cd.bookings
+WHERE starttime >= '2012-09-01' AND starttime <='2012-09-30'
 GROUP BY facid
-ORDER BY COUNT(facid) DESC
+ORDER BY SUM(slots) DESC
 '''
 
 execute_and_print(sql_query)
@@ -243,7 +244,7 @@ sql_query = r'''
 SELECT starttime, cd.facilities.name from cd.bookings
 INNER JOIN cd.facilities ON cd.bookings.facid = cd.facilities.facid
 WHERE cd.facilities.name LIKE '%Tennis Court%'
-AND starttime BETWEEN '2012-09-21 00:00:00' AND '2012-09-21 23:59:59'
+AND starttime >= '2012-09-21 00:00:00' AND starttime < '2012-09-22 00:00:00'
 ORDER BY starttime
 '''
 
