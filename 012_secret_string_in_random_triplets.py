@@ -42,14 +42,14 @@ def recoverSecret(triplets):
 
     # triplet here is defined as a sequence of three letters such that each letter occurs
     # somewhere before the next in the given string
-    
+
     while letters:  # we iterate through letters until there are no letters left
         updated_letters = set(letters)
 
         for letter in letters:  # we try to find a letter that doesn't come after any other letter, it means it's the next letter in the message
             for triplet in triplets:
                 if letter not in triplet:
-                    pass
+                    continue
                 else:
                     if letter != triplet[0]:  # if a letter isn't first on the list it means it can't be the next letter
                         updated_letters.discard(letter)  # we keep removing letters until there's only one left
@@ -99,7 +99,7 @@ if __name__ == '__main__':
         for letter in letters:
             for triplet in triplets:
                 if letter not in triplet:
-                    pass
+                    continue
                 else:
                     if letter != triplet[0]:
                         updated_letters.discard(letter)
